@@ -132,7 +132,7 @@ class TeleporterContainer implements \ArrayAccess, \Countable
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->teleporters[$offset]);
     }
@@ -146,7 +146,7 @@ class TeleporterContainer implements \ArrayAccess, \Countable
      * </p>
      * @return mixed Can return all value types.
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->getTeleporter($offset);
     }
@@ -163,7 +163,7 @@ class TeleporterContainer implements \ArrayAccess, \Countable
      * </p>
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new \BadMethodCallException();
     }
@@ -177,12 +177,12 @@ class TeleporterContainer implements \ArrayAccess, \Countable
      * </p>
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         throw new \BadMethodCallException();
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->teleporters);
     }

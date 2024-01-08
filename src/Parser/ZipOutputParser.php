@@ -68,6 +68,11 @@ class ZipOutputParser implements ParserInterface
             }
 
             if ($mtime === false) {
+                // See https://github.com/alchemy-fr/Zippy/issues/111#issuecomment-1051243883
+                $mtime = \DateTime::createFromFormat('m-d-Y H:i', $chunks[2]);
+            }
+
+            if ($mtime === false) {
                 $mtime = new \DateTime($chunks[2]);
             }
 
